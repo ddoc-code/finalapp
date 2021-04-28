@@ -1,0 +1,67 @@
+<!doctype html>
+
+<html>
+	<head>
+		<link rel='stylesheet' href='/style.css' />
+
+		<title>Register</title>
+	</head>
+
+	<body>
+
+		<div class="centralContainer">
+			<div class="pageContent">
+
+				<h1>Register</h1>
+
+				<nav class="navBar">
+					<ul>
+						<li><a href='./'>Home</a></li>
+						<li><a href='/about'>About</a></li>
+						<li><a href='/register'>Register</a></li>
+						<li><a href='/login'>Log In</a></li>
+						<li><a href='/logout'>Log Out</a></li>
+						<li><a href='/addfood'>Add Food</a></li>
+						<li><a href='/search'>Search</a></li>
+						<li><a href='/update'>Update</a></li>
+						<li><a href='/listfood'>Food List</a></li>
+						<li><a href='/api'>API</a></li>
+					</ul>
+				</nav>
+
+				<p>Please fill in this form to register. Please note:</p>
+
+				<ul>
+					<li>All fields must be filled.</li>
+					<li>First and Last names must be text.</li>
+					<li>Email must be in the correct format.</li>
+					<li>Username must be text or numbers and at least 4 characters in length.</li>
+					<li>Password must be at least 7 characters in length.</li>
+				</ul>
+
+				<form method="POST" action="/registered">
+					<label for="firstname">First Name:</label>
+					<input id="firstname" type="text" name="firstname" value="enter first name" />
+					<br>
+					<label for="lastname">Last Name:</label>
+					<input id="lastname" type="text" name="lastname" value="enter last name" />
+					<br>
+					<label for="email">Email Address:</label>
+					<input id="email" type="text" name="email" value="enter email address" />
+					<br>
+					<label for="username">Username:</label>
+					<input id="username" type="text" name="username" value="enter username" />
+					<br>
+					<label for="password">Password:</label>
+					<input id="password" type="password" name="password" value="enter password" />
+					<br>
+					<input type="submit" value="Submit" />
+				</form>
+
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!doctype html>
+
+<html>
+	<head>
+		<link rel='stylesheet' href='/style.css' />
+
+		<title>Update</title>
+	</head>
+
+	<body>
+
+		<div class="centralContainer">
+			<div class="pageContent">
+
+				<h1>Update</h1>
+
+				<nav class="navBar">
+					<ul>
+						<li><a href='./'>Home</a></li>
+						<li><a href='/about'>About</a></li>
+						<li><a href='/register'>Register</a></li>
+						<li><a href='/login'>Log In</a></li>
+						<li><a href='/logout'>Log Out</a></li>
+						<li><a href='/addfood'>Add Food</a></li>
+						<li><a href='/search'>Search</a></li>
+						<li><a href='/update'>Update</a></li>
+						<li><a href='/listfood'>Food List</a></li>
+						<li><a href='/api'>API</a></li>
+					</ul>
+				</nav>
+
+				<p>Please enter a food or ingredient to update. Please note that you cannot update or delete a food you did not add.</p>
+
+				<form method="GET" action="/updating">
+					<label for="search">Name:</label>
+					<input id="search" type="text" name="search" value="enter name" />
+					<br>
+					<input type="submit" value="Submit" />
+				</form>
+
+				<% if(foodupdate != null){ %>
+
+					<h2><%= foodupdate.name %></h2>
+
+					<% var res = []; %>
+
+					<% res.push(foodupdate.name) %>
+					<% res.push(foodupdate.value) %>
+					<% res.push(foodupdate.unit) %>
+					<% res.push(foodupdate.calories) %>
+					<% res.push(foodupdate.carbs) %>
+					<% res.push(foodupdate.fat) %>
+					<% res.push(foodupdate.protein) %>
+					<% res.push(foodupdate.salt) %>
+					<% res.push(foodupdate.sugar) %>
+					<% res.push(foodupdate.user) %>
+
+				<%}else if (searched == true){%>
+					<h4>We couldn't find that item.</h4>
+				<% } %>
+
+				<div id="container"></div>
+
+				<script>
+					var data = ["Name", "Value", "Unit", "Calories", "Carbs", "Fat", "Protein", "Salt", "Sugar", "Added By"];
+
+					var getRes = <%- JSON.stringify(res) %>;
+
+					data = data.concat(getRes);
+
+					var perRow = 10;
+					table = document.createElement("table"),
+					row = table.insertRow();
+
+					for (var i = 0; i < data.length; i++) {
+
+						var cell = row.insertCell();
+						cell.innerHTML = data[i];
+
+						var next = i + 1;
+						if (next%perRow == 0 && next != data.length) {
+							row = table.insertRow();
+						}
+					}
+
+					document.getElementById("container").appendChild(table);
+				</script>
+
+				<% if(foodupdate != null){ %>
+					<% if(foodupdate.user != user){ %>
+						<h4>You cannot edit this item, as it was not added by you.</h4>
+					<%}else{%>
+
+						<p>Please enter the new details for this item. Please note:</p>
+
+						<ul>
+							<li>All fields must be filled.</li>
+							<li>Name must be text.</li>
+							<li>Values Per must be numeric.</li>
+							<li>Unit must be text.</li>
+							<li>Calories, carbs, fat, protein, salt and sugar must be numeric.</li>
+						</ul>
+
+						<form method="POST" action="/updated">
+							<label for="name">Name:</label>
+							<input id="name" type="text" name="name" value="enter name" />
+							<br>
+							<label for="value">Values Per:</label>
+							<input id="value" type="text" name="value" value="enter measurement" />
+							<br>
+							<label for="unit">Unit:</label>
+							<input id="unit" type="text" name="unit" value="enter unit" />
+							<br>
+							<label for="calories">Calories:</label>
+							<input id="calories" type="text" name="calories" value="enter calories" />
+							<br>
+							<label for="carbs">Carbs:</label>
+							<input id="carbs" type="text" name="carbs" value="enter carbs" />
+							<br>
+							<label for="fat">Fat:</label>
+							<input id="fat" type="text" name="fat" value="enter fat" />
+							<br>
+							<label for="protein">Protein:</label>
+							<input id="protein" type="text" name="protein" value="enter protein" />
+							<br>
+							<label for="salt">Salt:</label>
+							<input id="salt" type="text" name="salt" value="enter salt" />
+							<br>
+							<label for="sugar">Sugar:</label>
+							<input id="sugar" type="text" name="sugar" value="enter sugar" />
+							<br>
+							<input id="DBid" type="hidden" name="DBid" value="<%= foodupdate._id %>" />
+							<input type="submit" value="Submit" />
+						</form>
+
+						<p>You can use the button below to delete this item.</p>
+
+						<form method="POST" action="/deleted" onsubmit="return confirm('Do you really want to delete this item?');">
+							<input id="name" type="hidden" name="name" value="<%= foodupdate.name %>" />
+							<input id="DBid" type="hidden" name="DBid" value="<%= foodupdate._id %>" />
+							<input type="submit" value="Delete this item" />
+						</form>
+
+					<% } %>
+				<% } %>
+			</div>
+		</div>
+
+	</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+
+<html>
+	<head>
+		<link rel='stylesheet' href='/style.css' />
+
+		<title>Search Results</title>
+	</head>
+
+	<body>
+
+		<div class="centralContainer">
+			<div class="pageContent">
+
+				<h1>Search Results</h1>
+
+				<nav class="navBar">
+					<ul>
+						<li><a href='./'>Home</a></li>
+						<li><a href='/about'>About</a></li>
+						<li><a href='/register'>Register</a></li>
+						<li><a href='/login'>Log In</a></li>
+						<li><a href='/logout'>Log Out</a></li>
+						<li><a href='/addfood'>Add Food</a></li>
+						<li><a href='/search'>Search</a></li>
+						<li><a href='/update'>Update</a></li>
+						<li><a href='/listfood'>Food List</a></li>
+						<li><a href='/api'>API</a></li>
+					</ul>
+				</nav>
+
+				<h3>Here are the results of your search:</h3>
+
+				<% var res = []; %>
+			
+				<% foodsearch.forEach(function(food){ %>
+					<% res.push(food.name); %>
+					<% res.push(food.value); %>
+					<% res.push(food.unit); %>
+					<% res.push(food.calories); %>
+					<% res.push(food.carbs); %>
+					<% res.push(food.fat); %>
+					<% res.push(food.protein); %>
+					<% res.push(food.salt); %>
+					<% res.push(food.sugar); %>
+					<% res.push(food.user); %>
+				<% }) %>
+
+				<div id="container"></div>
+
+				<h4>We found <%= foodsearch.length %> result(s).</h4>
+
+				<script>
+					var data = ["Name", "Value", "Unit", "Calories", "Carbs", "Fat", "Protein", "Salt", "Sugar", "Added By"];
+
+					var getRes = <%- JSON.stringify(res) %>;
+
+					data = data.concat(getRes);
+
+					var perRow = 10;
+					table = document.createElement("table"),
+					row = table.insertRow();
+
+					for (var i = 0; i < data.length; i++) {
+
+						var cell = row.insertCell();
+						cell.innerHTML = data[i];
+
+						var next = i + 1;
+						if (next%perRow == 0 && next != data.length) {
+							row = table.insertRow();
+						}
+					}
+
+					document.getElementById("container").appendChild(table);
+				</script>
+			</div>
+		</div>
+
+	</body>
+</html>

@@ -1,0 +1,130 @@
+body {
+	background-color: seagreen;
+
+	/* brick effect */
+	background-image: linear-gradient(45deg, transparent 20%, black 25%, transparent 25%),
+	linear-gradient(-45deg, transparent 20%, black 25%, transparent 25%),
+	linear-gradient(-45deg, transparent 75%, black 80%, transparent 0),
+	radial-gradient(gray 2px, transparent 0);
+	background-size: 30px 30px, 30px 30px;
+	/* end brick effect */
+}
+
+h1 {
+	color: LemonChiffon;
+	text-align: center;
+	font-family: Georgia, serif;
+}
+
+h2, h3, h4 {
+	text-align: center;
+}
+
+p {
+	font-family: verdana;
+	text-align: center;
+}
+
+li {
+	text-align: center;
+}
+
+form {
+	text-align: center;
+}
+
+.art {
+	margin: 0px;
+	padding: 0px;
+	text-align:center;
+}
+
+.centralContainer { /* Background box */
+	background-color: salmon;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	border: 4px solid black;
+}
+
+.pageContent { /*foreground box*/
+	background-color: royalblue;
+	color: floralwhite;
+	border: 4px solid black;
+	padding: 10px 20px;
+	margin: 10px;
+}
+
+.navBar {
+	border: 1px solid black;
+	width: 100%;
+	overflow: auto;
+}
+
+.navBar ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: mediumslateblue;
+	width: 100%;
+}
+
+.navBar li {
+	float: left;
+	width: 20%;
+}
+
+.navBar a { /* These buttons serve as links to different pages of the site */
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.navBar a:hover { /* Controls what happens when you hover over a button */
+	background-color: floralwhite;
+	color: rgb(151,51,51);
+}
+
+.navBar a:active { /* Controls what happens when you click a button */
+	background-color: rgb(51,51,151);
+}
+
+table {
+	/*box-sizing: border-box;*/
+	overflow: hidden;
+	margin: 4em auto;
+	border-collapse: collapse;
+	/*min-width: 23em;*/
+	width: 100%;
+	max-width: 56em;
+	/*border-radius: .5em;*/
+	box-shadow: 0 0 .5em #000;
+	background-color: lightskyblue;
+	border: 1px solid black;
+	text-align: center;
+	color: white;
+}
+
+th, td {
+	border: 1px solid black;
+	height: 50px;
+}
+
+.about {
+	list-style-type: none;
+}
+
+.imageLeft { /* not yet used */
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 256px;
+	border: 1px solid black;
+	margin: 10px;
+	float: left;
+	max-width: 100%;
+	height: auto;
+}

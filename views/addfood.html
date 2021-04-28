@@ -1,0 +1,76 @@
+<!doctype html>
+
+<html>
+	<head>
+		<link rel='stylesheet' href='/style.css' />
+
+		<title>Add Food</title>
+	</head>
+
+	<body>
+
+		<div class="centralContainer">
+			<div class="pageContent">
+
+				<h1>Add Food</h1>
+
+				<nav class="navBar">
+					<ul>
+						<li><a href='./'>Home</a></li>
+						<li><a href='/about'>About</a></li>
+						<li><a href='/register'>Register</a></li>
+						<li><a href='/login'>Log In</a></li>
+						<li><a href='/logout'>Log Out</a></li>
+						<li><a href='/addfood'>Add Food</a></li>
+						<li><a href='/search'>Search</a></li>
+						<li><a href='/update'>Update</a></li>
+						<li><a href='/listfood'>Food List</a></li>
+						<li><a href='/api'>API</a></li>
+					</ul>
+				</nav>
+
+				<p>Please fill in this form to add a food or ingredient to the database. Please note:</p>
+
+				<ul>
+					<li>All fields must be filled.</li>
+					<li>Name must be text.</li>
+					<li>Values Per must be numeric.</li>
+					<li>Unit must be text.</li>
+					<li>Calories, carbs, fat, protein, salt and sugar must be numeric.</li>
+				</ul>
+
+				<form method="POST" action="/foodadded">
+					<label for="name">Name:</label>
+					<input id="name" type="text" name="name" value="enter name" />
+					<br>
+					<label for="value">Values Per:</label>
+					<input id="value" type="text" name="value" value="enter measurement" />
+					<br>
+					<label for="unit">Unit:</label>
+					<input id="unit" type="text" name="unit" value="enter unit" />
+					<br>
+					<label for="calories">Calories:</label>
+					<input id="calories" type="text" name="calories" value="enter calories" />
+					<br>
+					<label for="carbs">Carbs:</label>
+					<input id="carbs" type="text" name="carbs" value="enter carbs" />
+					<br>
+					<label for="fat">Fat:</label>
+					<input id="fat" type="text" name="fat" value="enter fat" />
+					<br>
+					<label for="protein">Protein:</label>
+					<input id="protein" type="text" name="protein" value="enter protein" />
+					<br>
+					<label for="salt">Salt:</label>
+					<input id="salt" type="text" name="salt" value="enter salt" />
+					<br>
+					<label for="sugar">Sugar:</label>
+					<input id="sugar" type="text" name="sugar" value="enter sugar" />
+					<br>
+					<input type="submit" value="Submit" />
+				</form>
+			</div>
+		</div>
+
+	</body>
+</html>
